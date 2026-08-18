@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1312BD2DC99B52005FF007 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 4C1312BC2DC99B52005FF007 /* GoogleMobileAds */; };
 		4C8721F62DBB156300B5B3D5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 4C8721F52DBB156300B5B3D5 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1312BD2DC99B52005FF007 /* GoogleMobileAds in Frameworks */,
 				4C8721F62DBB156300B5B3D5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = "CE Wallet";
 			packageProductDependencies = (
 				4C8721F52DBB156300B5B3D5 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				4C1312BC2DC99B52005FF007 /* GoogleMobileAds */,
 			);
 			productName = "CE Wallet";
 			productReference = 4CE86C4F2DB9EBEB00B42642 /* CE Wallet.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4C8721F42DBB156300B5B3D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4C1312BB2DC99B52005FF007 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4CE86C502DB9EBEB00B42642 /* Products */;
@@ -279,7 +283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.20250426;
+				MARKETING_VERSION = 0.20260818;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mjbapps.CEWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -316,7 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.20250426;
+				MARKETING_VERSION = 0.20260818;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mjbapps.CEWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -353,6 +357,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4C1312BB2DC99B52005FF007 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
 		4C8721F42DBB156300B5B3D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -364,6 +376,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C1312BC2DC99B52005FF007 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C1312BB2DC99B52005FF007 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		4C8721F52DBB156300B5B3D5 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C8721F42DBB156300B5B3D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

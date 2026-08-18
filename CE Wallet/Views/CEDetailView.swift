@@ -97,7 +97,6 @@ struct CEDetailView: View {
     }
 }
 
-// Full-screen attachment view for images and PDFs
 struct FullScreenAttachmentView: View {
     let fileData: Data
     let isPDF: Bool
@@ -125,23 +124,18 @@ struct FullScreenAttachmentView: View {
                     .foregroundColor(.white)
             }
 
-            // Buttons
             VStack {
                 HStack {
-                    // Share button
-                    Button(action: {
-                        showShareSheet = true
-                    }) {
+                    Button(action: { showShareSheet = true }) {
                         Image(systemName: "square.and.arrow.up")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.white.opacity(0.8))
                     }
                     .padding()
-                    
+
                     Spacer()
-                    
-                    // Close button
+
                     Button(action: { dismiss() }) {
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
@@ -171,14 +165,12 @@ struct FullScreenAttachmentView: View {
     }
 }
 
-// Share sheet wrapper
 struct ShareSheet: UIViewControllerRepresentable {
     let activityItems: [Any]
-    
+
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-        return controller
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
     }
-    
+
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

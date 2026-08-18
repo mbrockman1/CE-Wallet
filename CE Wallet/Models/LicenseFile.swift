@@ -1,13 +1,5 @@
 //
 //  LicenseFile.swift
-//  CME Wallet
-//
-//  Created by Michael Brockman on 4/23/25.
-//
-
-
-//
-//  LicenseFile.swift
 //  CEWallet
 //
 

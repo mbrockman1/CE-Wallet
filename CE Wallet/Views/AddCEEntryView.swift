@@ -157,7 +157,7 @@ struct AddCEEntryView: View {
             existing.dateCompleted = dateCompleted
             existing.credits       = credits
             existing.receiptCode   = receiptCode.isEmpty ? nil : receiptCode
-            existing.notes         = notes.isEmpty ? nil : notes // Handle empty notes
+            existing.notes         = notes.isEmpty ? nil : notes
             tempFiles.forEach { existing.files.append($0) }
         } else {
             let newEntry = CEEntry(
@@ -165,10 +165,14 @@ struct AddCEEntryView: View {
                 dateCompleted: dateCompleted,
                 credits: credits,
                 receiptCode: receiptCode.isEmpty ? nil : receiptCode,
-                notes: notes.isEmpty ? nil : notes, // Handle empty notes
+                notes: notes.isEmpty ? nil : notes,
                 files: tempFiles
             )
             context.insert(newEntry)
+            AnalyticsManager.shared.logEvent(AnalyticsEvent.ceEntryAdded, parameters: [
+                "credits": Int(credits),
+                "hasAttachments": !tempFiles.isEmpty
+            ])
         }
     }
 }

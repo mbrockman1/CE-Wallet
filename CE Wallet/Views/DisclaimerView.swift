@@ -1,14 +1,10 @@
 //
 //  DisclaimerView.swift
-//  CME Wallet
+//  CEWallet
 //
-//  Created by Michael Brockman on 4/23/25.
-//
-
 
 import SwiftUI
 
-/// A view displaying the medical-legal disclaimer for CE Wallet.
 struct DisclaimerView: View {
     var body: some View {
         ScrollView {

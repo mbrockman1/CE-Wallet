@@ -37,6 +37,14 @@ struct CEListView: View {
     var body: some View {
         NavigationStack {
             List {
+                if entries.isEmpty {
+                    ContentUnavailableView(
+                        "No CE Entries Yet",
+                        systemImage: "book.closed",
+                        description: Text("Tap + to log your first continuing education credit.")
+                    )
+                    .listRowSeparator(.hidden)
+                }
                 ForEach(sortedYears, id: \.self) { year in
                     let items = byYear[year] ?? []
                     let totalCredits = items.reduce(0.0) { $0 + $1.credits }
@@ -54,6 +62,7 @@ struct CEListView: View {
                                 Button(role: .destructive) {
                                     context.delete(entry)
                                     viewModel.updateGrouping(entries: filteredEntries)
+                                    AnalyticsManager.shared.logEvent(AnalyticsEvent.ceEntryDeleted)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -69,6 +78,7 @@ struct CEListView: View {
                             let items = byYear[year] ?? []
                             for idx in offsets {
                                 context.delete(items[idx])
+                                AnalyticsManager.shared.logEvent(AnalyticsEvent.ceEntryDeleted)
                             }
                             viewModel.updateGrouping(entries: filteredEntries)
                         }
@@ -101,6 +111,7 @@ struct CEListView: View {
             }
             .onAppear {
                 viewModel.updateGrouping(entries: filteredEntries)
+                AnalyticsManager.shared.logScreenView("CE List")
             }
             .onChange(of: entries) { oldEntries, newEntries in
                 viewModel.updateGrouping(entries: filteredEntries)

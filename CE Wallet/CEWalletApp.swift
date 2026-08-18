@@ -7,25 +7,25 @@ import SwiftUI
 import SwiftData
 import OSLog
 import FirebaseCore
+import GoogleMobileAds
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        MobileAds.shared.start(completionHandler: nil)
+        AnalyticsManager.shared.applyStoredConsent()
 
-  func application(_ application: UIApplication,
-
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-
-    FirebaseApp.configure()
-
-    return true
+        return true
 
   }
-
 }
+
 
 
 @main
 struct CMEWalletApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var securityManager = SecurityManager()
     @AppStorage("useFaceID") private var useFaceID = false
@@ -120,8 +120,13 @@ struct CMEWalletApp: App {
                 .environmentObject(securityManager)
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
-            if newPhase == .active && useFaceID && !securityManager.isUnlocked {
-                securityManager.authenticate()
+            if newPhase == .active {
+                if useFaceID && !securityManager.isUnlocked {
+                    securityManager.authenticate()
+                }
+                ATTManager.requestTrackingAuthorizationIfNeeded()
+            } else if newPhase == .background && useFaceID {
+                securityManager.isUnlocked = false
             }
         }
     }

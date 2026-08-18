@@ -56,6 +56,7 @@ struct SettingsView: View {
                             pdfData = data
                             pdfFileName = "CE_Summary.pdf"
                             showCEAlert = true
+                            AnalyticsManager.shared.logEvent(AnalyticsEvent.pdfExported, parameters: ["type": "ce"])
                         } else {
                             print("Failed to generate CE PDF")
                         }
@@ -65,10 +66,18 @@ struct SettingsView: View {
                             pdfData = data
                             pdfFileName = "License_Summary.pdf"
                             showLicAlert = true
+                            AnalyticsManager.shared.logEvent(AnalyticsEvent.pdfExported, parameters: ["type": "license"])
                         } else {
                             print("Failed to generate License PDF")
                         }
                     }
+                }
+
+                Section("Privacy") {
+                    Toggle("Allow Analytics", isOn: Binding(
+                        get: { AnalyticsManager.shared.isCollectionEnabled },
+                        set: { AnalyticsManager.shared.setCollectionEnabled($0) }
+                    ))
                 }
                 Section(header: Text("Legal")){
                     NavigationLink("Disclaimer", destination: DisclaimerView())

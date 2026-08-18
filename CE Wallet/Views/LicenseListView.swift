@@ -27,6 +27,14 @@ struct LicenseListView: View {
     var body: some View {
         NavigationStack {
             List {
+                if viewModel.filteredLicenses.isEmpty {
+                    ContentUnavailableView(
+                        licenses.isEmpty ? "No Licenses Yet" : "No Matches",
+                        systemImage: "doc.text",
+                        description: Text(licenses.isEmpty ? "Tap + to add your first license." : "Try a different search.")
+                    )
+                    .listRowSeparator(.hidden)
+                }
                 ForEach(viewModel.filteredLicenses) { entry in
                     NavigationLink {
                         LicenseDetailView(entry: entry)
@@ -42,6 +50,7 @@ struct LicenseListView: View {
                             NotificationManager.shared.cancelNotification(for: entry)
                             context.delete(entry)
                             viewModel.updateFilteredLicenses(licenses: licenses)
+                            AnalyticsManager.shared.logEvent(AnalyticsEvent.licenseDeleted)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -58,6 +67,7 @@ struct LicenseListView: View {
                     offsets.map { viewModel.filteredLicenses[$0] }.forEach {
                         NotificationManager.shared.cancelNotification(for: $0)
                         context.delete($0)
+                        AnalyticsManager.shared.logEvent(AnalyticsEvent.licenseDeleted)
                     }
                     viewModel.updateFilteredLicenses(licenses: licenses)
                 }
@@ -94,6 +104,7 @@ struct LicenseListView: View {
             // Initial populate when view appears
             .onAppear {
                 viewModel.updateFilteredLicenses(licenses: licenses)
+                AnalyticsManager.shared.logScreenView("License List")
             }
             // Re-populate whenever the data changes
             .onChange(of: licenses) { _, newLicenses in

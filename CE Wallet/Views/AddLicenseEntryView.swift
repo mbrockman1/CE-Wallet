@@ -154,7 +154,7 @@ struct AddLicenseEntryView: View {
             existing.issuanceDate   = issuanceDate
             existing.licenseNumber  = licenseNumber.isEmpty ? nil : licenseNumber
             existing.expirationDate = expirationDate
-            existing.notes          = notes.isEmpty ? nil : notes // Handle empty notes
+            existing.notes          = notes.isEmpty ? nil : notes
             tempFiles.forEach { existing.files.append($0) }
             NotificationManager.shared.cancelNotification(for: existing)
             NotificationManager.shared.scheduleExpirationNotification(for: existing)
@@ -164,11 +164,14 @@ struct AddLicenseEntryView: View {
                 issuanceDate: issuanceDate,
                 licenseNumber: licenseNumber.isEmpty ? nil : licenseNumber,
                 expirationDate: expirationDate,
-                notes: notes.isEmpty ? nil : notes, // Handle empty notes
+                notes: notes.isEmpty ? nil : notes,
                 files: tempFiles
             )
             context.insert(newEntry)
             NotificationManager.shared.scheduleExpirationNotification(for: newEntry)
+            AnalyticsManager.shared.logEvent(AnalyticsEvent.licenseAdded, parameters: [
+                "hasAttachments": !tempFiles.isEmpty
+            ])
         }
     }
 }
