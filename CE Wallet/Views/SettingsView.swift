@@ -80,6 +80,7 @@ struct SettingsView: View {
                     ))
                 }
                 Section(header: Text("Legal")){
+                    NavigationLink("Privacy Policy", destination: PrivacyPolicyView())
                     NavigationLink("Disclaimer", destination: DisclaimerView())
                     NavigationLink("About Me", destination: AboutMeView())
                     NavigationLink("License", destination: LicenseView())

@@ -48,9 +48,7 @@ Licensee may not, without the prior written consent of Licensor:
                     
                     Text("7. Governing Law")
                         .font(.headline)
-                    Text("This Agreement shall be governed by and construed in accordance with the laws of the State of [INSERT YOUR STATE/COUNTRY], without regard to conflict of law principles.")
-                        .foregroundColor(.red)
-                        .bold()
+                    Text("This Agreement shall be governed by and construed in accordance with the laws of the State of Texas, without regard to conflict of law principles.")
                     
                     Text("8. Entire Agreement")
                         .font(.headline)
