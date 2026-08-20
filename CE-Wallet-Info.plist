@@ -6,16 +6,6 @@
 	<string>ca-app-pub-2182729311945385~7303867803</string>
 	<key>NSUserNotificationUsageDescription</key>
 	<string>CE Wallet uses notifications to remind you about upcoming license expirations and important deadlines.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Your data is used to show you relevant ads and measure their effectiveness.</string>
-	<key>NSPrivacyTracking</key>
-	<true/>
-	<key>NSPrivacyTrackingDomains</key>
-	<array>
-		<string>google.com</string>
-		<string>googleadservices.com</string>
-		<string>firebase.google.com</string>
-	</array>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

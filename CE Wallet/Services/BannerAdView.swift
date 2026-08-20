@@ -19,12 +19,12 @@ struct BannerAdView: UIViewControllerRepresentable {
         bannerView.adUnitID = adUnitID
         bannerView.rootViewController = viewController
 
+        // Always request non-personalized ads: CE Wallet does not track users
+        // or request App Tracking Transparency permission.
         let request = Request()
-        if ATTManager.shouldRequestNonPersonalizedAds {
-            let extras = Extras()
-            extras.additionalParameters = ["npa": "1"]
-            request.register(extras)
-        }
+        let extras = Extras()
+        extras.additionalParameters = ["npa": "1"]
+        request.register(extras)
         bannerView.load(request)
         
         // Add banner to view controller's view

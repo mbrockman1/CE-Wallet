@@ -18,9 +18,9 @@ struct PrivacyPolicyView: View {
                     Text("CE Wallet collects the following information:")
                     VStack(alignment: .leading, spacing: 8) {
                         Text("• Analytics: App usage data (screen views, feature interactions) via Firebase Analytics")
-                        Text("• App Tracking Transparency (ATT): Your permission to track your activity across apps and websites")
                         Text("• Local Data: Your CE entries, licenses, and attachments stored on your device")
                     }
+                    Text("\nCE Wallet does not use the App Tracking Transparency framework and does not track you across other companies' apps or websites.")
 
                     Text("2. How We Use Your Information")
                         .font(.headline)
@@ -28,13 +28,13 @@ struct PrivacyPolicyView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("• Understand how you use CE Wallet (feature adoption, retention)")
                         Text("• Improve app performance and stability")
-                        Text("• Deliver personalized or non-personalized ads via Google AdMob")
+                        Text("• Serve non-personalized ads via Google AdMob")
                         Text("• Comply with legal obligations")
                     }
 
-                    Text("3. Analytics & Tracking")
+                    Text("3. Analytics")
                         .font(.headline)
-                    Text("CE Wallet uses Firebase Analytics (Google's analytics platform) to track:")
+                    Text("CE Wallet uses Firebase Analytics (Google's analytics platform) to record:")
                     VStack(alignment: .leading, spacing: 8) {
                         Text("• Screen views (which sections you visit)")
                         Text("• Entry creation and deletion")
@@ -43,14 +43,9 @@ struct PrivacyPolicyView: View {
                     }
                     Text("\nWe do NOT collect your Identifier for Advertisers (IDFA) and do NOT build profiles of your health data.")
 
-                    Text("4. App Tracking Transparency")
+                    Text("4. Advertising")
                         .font(.headline)
-                    Text("On first launch, CE Wallet requests permission to track your activity. You can:")
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("• Allow tracking: Ads may be personalized based on your app usage")
-                        Text("• Deny tracking: Ads will be non-personalized")
-                    }
-                    Text("\nYou can change this setting anytime in Settings > Privacy > Tracking.")
+                    Text("CE Wallet shows banner ads via Google AdMob. All ads are served as non-personalized ads — CE Wallet does not request tracking permission and does not link ad requests to your identity.")
 
                     Text("5. Analytics Opt-Out")
                         .font(.headline)
@@ -83,7 +78,6 @@ struct PrivacyPolicyView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("• Access, correct, or delete your local data (delete entries in the app)")
                         Text("• Opt out of analytics (Settings > Privacy toggle)")
-                        Text("• Deny app tracking (Settings > Privacy > Tracking)")
                         Text("• Request data deletion (contact the developer)")
                     }
 

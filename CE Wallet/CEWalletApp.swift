@@ -9,7 +9,6 @@ import OSLog
 import FirebaseCore
 import GoogleMobileAds
 
-
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
@@ -124,7 +123,6 @@ struct CMEWalletApp: App {
                 if useFaceID && !securityManager.isUnlocked {
                     securityManager.authenticate()
                 }
-                ATTManager.requestTrackingAuthorizationIfNeeded()
             } else if newPhase == .background && useFaceID {
                 securityManager.isUnlocked = false
             }
