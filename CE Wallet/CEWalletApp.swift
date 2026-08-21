@@ -20,8 +20,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   }
 }
 
-
-
 @main
 struct CMEWalletApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

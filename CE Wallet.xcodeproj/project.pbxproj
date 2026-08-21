@@ -283,7 +283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.20260819;
+				MARKETING_VERSION = 1.20260820;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mjbapps.CEWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -320,7 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.20260819;
+				MARKETING_VERSION = 1.20260820;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mjbapps.CEWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
